@@ -1,0 +1,11 @@
+.how-it-works {
+}
+
+.how-it-works__titled-par {
+  width: 80%;
+  margin-top: 20px;
+
+  @include mq($from:mobile, $until:tablet){
+    width: 100%;
+  }
+}

@@ -1,0 +1,17 @@
+.home {
+
+}
+
+.home__links {
+  display: flex;
+  flex-direction: column;
+}
+
+.home__link {
+  width: 200px;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #000;
+  margin-bottom: 10px;
+  cursor: pointer;
+}

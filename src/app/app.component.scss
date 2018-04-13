@@ -1,0 +1,24 @@
+@import "~sass/mixins/global";
+
+.app {
+  height: 100%;
+}
+
+.app__container {
+  @include container;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.app__header {
+  height: 70px;
+}
+
+.app__title {
+
+}
+
+.app__content {
+  flex: 1;
+}
