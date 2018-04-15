@@ -1,3 +1,20 @@
-<p>
-  list-employees works!
-</p>
+{{isEmployeeBoxOpen}}
+<div class="employees">
+  <div class="employees__list">
+    <div class="table">
+      <div class="table__head">
+        <div class="table__head-item">Employee Name</div>
+        <div class="table__head-item">Date of Birth</div>
+        <div class="table__head-item">Department</div>
+      </div>
+      <div class="table__column" *ngFor="let employee of employees">
+        <div class="table__column-item">{{employee.fullName}}</div>
+        <div class="table__column-item">{{employee.dob | date:"MM/dd/yyyy"}}</div>
+        <div class="table__column-item" (click)="editEmployee(employee, $event)">{{employee.department}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="employee-box" [class.employee-box_is-active]="isEmployeeBoxOpen">
+  <app-view-employee *ngIf="selectedEmployee" [employee]="selectedEmployee" (closeEmployeeBox)="closeEmployeeBox($event)"></app-view-employee>
+</div>

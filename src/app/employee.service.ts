@@ -11,18 +11,19 @@ import { Employee } from './employee';
 export class EmployeeService {
 
   private employeeUrl = 'http://employees-api.azurewebsites.net/api/Employees/GetAll';  // URL to web api
+  private updateEmployeeUrl = 'http://employees-api.azurewebsites.net/api/Employees/Update';
 
   constructor(
     private http: HttpClient,
   ) { }
 
-  /** GET heroes from the server */
+  /** GET Employees from the server */
  getEmployees (): Observable<Employee[]> {
    return this.http.get<Employee[]>(this.employeeUrl)
-   .pipe(
-        tap(employees => this.log(`fetched heroes`)),
-        catchError(console.log('error'))
-      );
+ }
+
+ updateEmployeeDepartment(employee: Employee): Observable<Employee[]> {
+   return this.http.get<Employee[]>(this.updateEmployeeUrl)
  }
 
 }

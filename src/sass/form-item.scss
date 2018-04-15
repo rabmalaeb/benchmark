@@ -1,0 +1,19 @@
+.form-item {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.form-item__label {
+  margin-right: 20px;
+  font-size: 21px;
+  color: rgba(0,0,0,0.8);
+}
+
+.form-item__name {
+  font-size: 12px;
+}
+
+.form-item__input {
+  flex: auto;
+}

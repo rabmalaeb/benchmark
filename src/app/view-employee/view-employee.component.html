@@ -1,0 +1,37 @@
+<div class="x-employee">
+  {{isEmployeeBoxOpen}}
+  <div class="x-employee__content">
+    <div class="x-employee__section">
+      <div class="x-employee__image-container">
+        <img class="x-employee__image" src={{employee.imageUrl}}>
+      </div>
+      <div class="x-employee__name">
+        {{employee.fullName}}
+      </div>
+    </div>
+    <div class="x-employee__section">
+      <div class="form-item">
+        <div class="form-item__label">
+          Change Department
+        </div>
+        <div class="form-item__input">
+          <select class="input-item input-item_is-select" [(ngModel)]="selectedDepartment">
+            <option *ngFor="let department of departments" value={{department}} ngselected="department==employee.department"> {{department}} </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="x-employee__section x-employee__section_is-end">
+      <div class="x-employee__buttons">
+        <div class="x-employee__button">
+          <div class="button-item" (click)="onSave()">
+            Save
+          </div>
+        </div>
+        <div class="button-item" (click)="closeModal()">
+          Cancel
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
