@@ -12,6 +12,8 @@ import { NewEmployeeComponent } from './new-employee/new-employee.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { ViewEmployeeComponent } from './view-employee/view-employee.component';
+import { AppPagerComponent } from './app-pager/app-pager.component';
+import { ElistItemComponent } from './elist-item/elist-item.component';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { ViewEmployeeComponent } from './view-employee/view-employee.component';
     NewEmployeeComponent,
     HomeComponent,
     ViewEmployeeComponent,
+    AppPagerComponent,
+    ElistItemComponent,
   ],
   imports: [
     BrowserModule,

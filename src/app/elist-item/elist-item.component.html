@@ -1,0 +1,7 @@
+<div class="table__column-item">{{employee.fullName}}</div>
+<div class="table__column-item">{{employee.dob | date:"MM/dd/yyyy"}}</div>
+<div class="table__column-item table__column-item_is-last" (click)="editEmployee(employee, $event)">{{employee.department}}</div>
+
+<div class="employee-box" [class.employee-box_is-active]="isEmployeeBoxOpen">
+    <app-view-employee *ngIf="isEmployeeBoxOpen" [employee]="employee" (closeEmployeeBox)="closeEmployeeBox($event)"></app-view-employee>
+</div>

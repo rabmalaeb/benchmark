@@ -1,10 +1,11 @@
 .employee-box {
-  position: fixed;
-  top: 30%;
-  left: 30%;
   width: 500px;
   background: #fff;
   display: none;
+  position: absolute;
+  z-index: 99;
+  right: 0;
+  bottom: 0;
 }
 
 .employee-box_is-active {

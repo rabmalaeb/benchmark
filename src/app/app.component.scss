@@ -6,13 +6,13 @@
 
 .app__container {
   @include container;
-  display: flex;
-  flex-direction: column;
   height: 100%;
 }
 
 .app__header {
-  height: 70px;
+  height: 100px;
+  display: flex;
+  align-items: center;
 }
 
 .app__title {
@@ -20,5 +20,5 @@
 }
 
 .app__content {
-  flex: 1;
+
 }

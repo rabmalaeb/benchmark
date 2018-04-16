@@ -1,37 +1,47 @@
 $table--item-width: 300px;
 $table--item-padding: 10px;
 $table--width: $table--item-width * 3;
+$table--border-color: #e6e9ee;
 
 .table {
   display: flex;
   flex-direction: column;
   width: $table--width;
+  border: 1px solid $table--border-color;
 }
 
 .table__head {
   display: flex;
-  background: #414296;
+  background: #717C95;
   color: #fff;
 }
 
 .table__head-item {
   width: $table--item-width;
   padding: $table--item-padding;
-  border-right: 1px solid #fff;
+  border-right: 1px solid $table--border-color;
+  text-transform: uppercase;
+  &:last-child {
+    border-right: 0px;
+  }
 }
 
 .table__column{
   display: flex;
-  background: #647cca;
-  color: #fff;
+  position: relative;
+  background: #e6e9ee;
+  color: #333;
 
   &:nth-child(2n) {
-    background: #afacac;
+    background: #fff;
   }
 }
 
 .table__column-item {
   width: $table--item-width;
   padding: $table--item-padding;
-  border-right: 1px solid #fff;
+  border-right: 1px solid $table--border-color;
+  &:last-child {
+    border-right: 0px;
+  }
 }

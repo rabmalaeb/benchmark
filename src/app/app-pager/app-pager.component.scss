@@ -1,0 +1,21 @@
+.pager {
+    display: flex;
+    flex-direction: column;
+}
+
+.pager__content {
+    margin-bottom: 20px;
+}
+
+
+.pager__controls {
+    display: flex;
+}
+
+.pager__control {
+    margin-right: 10px;
+}
+
+.elist-item {
+    display: flex;
+}

@@ -38,13 +38,4 @@ export class ListEmployeesComponent implements OnInit {
     this.isEmployeeBoxOpen = true;
   }
 
-  /**
-   * [closeEmployeeBox description]
-   * @param  {[type]} event [description]
-   * @return {[type]}       [description]
-   */
-  closeEmployeeBox(event) {
-    this.isEmployeeBoxOpen = !event;
-  }
-
 }

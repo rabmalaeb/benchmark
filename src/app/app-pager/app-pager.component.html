@@ -1,0 +1,22 @@
+<div class="pager">
+  <div class="pager__content">
+    <div class="table">
+      <div class="table__head">
+        <div class="table__head-item">Employee Name</div>
+        <div class="table__head-item">Date of Birth</div>
+        <div class="table__head-item">Department</div>
+      </div>
+      <div class="table__column" *ngFor="let employee of employees">
+        <elist-item class="elist-item" [employee]="employee"></elist-item>
+      </div>
+    </div>
+  </div>
+  <div class="pager__controls">
+    <div class="pager__control">
+      Previous
+    </div>
+    <div class="pager__control">
+      Next
+    </div>
+  </div>
+</div>

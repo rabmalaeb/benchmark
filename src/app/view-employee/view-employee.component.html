@@ -1,5 +1,4 @@
 <div class="x-employee">
-  {{isEmployeeBoxOpen}}
   <div class="x-employee__content">
     <div class="x-employee__section">
       <div class="x-employee__image-container">
@@ -16,7 +15,7 @@
         </div>
         <div class="form-item__input">
           <select class="input-item input-item_is-select" [(ngModel)]="selectedDepartment">
-            <option *ngFor="let department of departments" value={{department}} ngselected="department==employee.department"> {{department}} </option>
+            <option *ngFor="let department of departments" value={{department}} ngSelected="department==employee.department"> {{department}} </option>
           </select>
         </div>
       </div>
