@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListEmployeesComponent }      from './list-employees/list-employees.component';
 import { NewEmployeeComponent }      from './new-employee/new-employee.component';
-import { HomeComponent }      from './home/home.component';
+import { NavComponent }      from './nav/nav.component';
+import { WizardComponent } from './wizard/wizard.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'new', component: NewEmployeeComponent },
+  { path: '', component: ListEmployeesComponent },
+  { path: 'new', component: WizardComponent },
   { path: 'list', component: ListEmployeesComponent },
 ];
 

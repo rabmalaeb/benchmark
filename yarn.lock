@@ -1629,6 +1629,10 @@ data-uri-to-buffer@1:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/data-uri-to-buffer/-/data-uri-to-buffer-1.2.0.tgz#77163ea9c20d8641b4707e8f18abdf9a78f34835"
 
+date-fns@^1.29.0:
+  version "1.29.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.29.0.tgz#12e609cdcb935127311d04d33334e2960a2a54e6"
+
 date-format@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/date-format/-/date-format-1.2.0.tgz#615e828e233dd1ab9bb9ae0950e0ceccfa6ecad8"
@@ -4276,6 +4280,17 @@ netmask@~1.0.4:
 next-tick@1:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
+
+ng2-datepicker@^2.2.5:
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/ng2-datepicker/-/ng2-datepicker-2.2.5.tgz#ee3e3f7b3a76a36e41f07d52c0a202135ae2f1a9"
+  dependencies:
+    date-fns "^1.29.0"
+    ngx-slimscroll "^3.6.1"
+
+ngx-slimscroll@^3.6.1:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/ngx-slimscroll/-/ngx-slimscroll-3.7.0.tgz#a6bb93dee0c72654ee875c8eb704080e55e72f33"
 
 no-case@^2.2.0:
   version "2.3.2"

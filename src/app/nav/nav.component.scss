@@ -1,0 +1,27 @@
+.nav {
+
+}
+
+.nav__links {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav__item {
+  width: 200px;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #303030;
+  }
+
+  &_is-active {
+    background-color: #424242;
+  }
+}
+
+.nav__link {
+  color: #fff;
+}

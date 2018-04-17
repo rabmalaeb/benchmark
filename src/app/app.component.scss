@@ -7,6 +7,8 @@
 .app__container {
   @include container;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .app__header {
@@ -17,6 +19,16 @@
 
 .app__title {
 
+}
+
+.app__body {
+  display: flex;
+  flex: 1;
+}
+
+.app__nav {
+  margin-right: 20px;
+  background-color: #707c95;
 }
 
 .app__content {

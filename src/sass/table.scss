@@ -21,6 +21,7 @@ $table--border-color: #e6e9ee;
   padding: $table--item-padding;
   border-right: 1px solid $table--border-color;
   text-transform: uppercase;
+  font-size: 14px;
   &:last-child {
     border-right: 0px;
   }

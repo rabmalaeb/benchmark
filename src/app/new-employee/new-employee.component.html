@@ -4,28 +4,31 @@
   <div class="new-employee__section">
     <div class="new-employee__item">
       <div class="form-item">
-        <div class="form-item__input">
+        <div class="form-item__label">
           Name
         </div>
-        <div class="form-item__label">
+        <div class="form-item__input">
+          <input class="input-item" type="text">
         </div>
       </div>
     </div>
     <div class="new-employee__item">
       <div class="form-item">
-        <div class="form-item__input">
+        <div class="form-item__label">
           Date of Birth
         </div>
-        <div class="form-item__label">
+        <div class="form-item__input">
+            <ng-datepicker [(ngModel)]="date" [options]="options"></ng-datepicker>
         </div>
       </div>
     </div>
     <div class="new-employee__item">
       <div class="form-item">
-        <div class="form-item__input">
+        <div class="form-item__label">
           Salary
         </div>
-        <div class="form-item__label">
+        <div class="form-item__input">
+            <input class="input-item" type="text">
         </div>
       </div>
     </div>
