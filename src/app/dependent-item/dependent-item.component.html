@@ -1,3 +1,17 @@
-<p>
-  dependent-item works!
-</p>
+<div class="dependent-item">
+    <div class="dependent-item__item">
+        <div class="form-item">
+            <div class="form-item__label">
+              Dependent
+            </div>
+            <div class="form-item__input">
+              <input type="text" class="input-item" value="{{dependent.name}}" (keyup)="onKey($event)">
+            </div>
+          </div>
+    </div>
+    <div class="dependent-item__button">
+      <div class="button-item" (click)="onDelete()">
+        Remove
+      </div>
+    </div>
+</div>
