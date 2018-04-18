@@ -1,3 +1,15 @@
-<p>
-  benefits works!
-</p>
+<div class="benefits">
+  <div class="benefits__content">
+    <div class='benefits__available' [dragula]='"another-bag"' [dragulaModel]='benefits'>
+      <div class="benefits__item" *ngFor='let text of benefits' [innerHtml]='text'></div>
+    </div>
+    <div class='benefits__assigned' [dragula]='"another-bag"' [dragulaModel]='selectedBenefits'>
+      <div class="benefits__item"  *ngFor='let text of selectedBenefits' [innerHtml]='text'></div>
+    </div>
+  </div>
+  <div class="benefits__button">
+    <div class="button-item" (click)="next()">
+      Next
+    </div>
+  </div>
+</div>

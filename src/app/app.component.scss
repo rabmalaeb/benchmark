@@ -8,29 +8,32 @@
   @include container;
   height: 100%;
   display: flex;
+}
+
+.app__title {
+  color: #fff;
+}
+
+.app__nav {
+  background-color: #363941;
+}
+
+
+.app__body {
+  display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .app__header {
   height: 100px;
   display: flex;
   align-items: center;
-}
-
-.app__title {
-
-}
-
-.app__body {
-  display: flex;
-  flex: 1;
-}
-
-.app__nav {
-  margin-right: 20px;
-  background-color: #707c95;
+  background: #5FBBE7;
+  margin-bottom: 30px;
+  padding-left: 20px;
 }
 
 .app__content {
-
+  padding-left: 20px;
 }

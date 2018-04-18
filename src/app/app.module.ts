@@ -6,6 +6,7 @@ import { EmployeeService } from './employee.service';
 import { FormsModule } from '@angular/forms';
 import { DepartmentService } from './department.service';
 import { NgDatepickerModule } from 'ng2-datepicker';
+import { DragulaModule } from 'ng2-dragula';
 
 
 import { AppComponent } from './app.component';
@@ -19,6 +20,7 @@ import { ElistItemComponent } from './elist-item/elist-item.component';
 import { WizardComponent } from './wizard/wizard.component';
 import { DependentsComponent } from './dependents/dependents.component';
 import { BenefitsComponent } from './benefits/benefits.component';
+import { DependentItemComponent } from './dependent-item/dependent-item.component';
 
 
 @NgModule({
@@ -33,6 +35,7 @@ import { BenefitsComponent } from './benefits/benefits.component';
     WizardComponent,
     DependentsComponent,
     BenefitsComponent,
+    DependentItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import { BenefitsComponent } from './benefits/benefits.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgDatepickerModule
+    NgDatepickerModule,
+    DragulaModule
   ],
   providers: [
       EmployeeService,

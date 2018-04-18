@@ -1,17 +1,17 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="app">
   <div class="app__container">
-    <div class="app__header">
-      <div class="app__title">
-        <h1 class="title">
-          <a class="title__link" routerLink="/" routerLinkActive="active">  {{ title }}</a>
-        </h1>
-      </div>
-    </div>
-    <div class="app__body">
       <div class="app__nav">
         <app-nav></app-nav>
       </div>
+    <div class="app__body">
+      <div class="app__header">
+          <div class="app__title">
+            <h1 class="title">
+              <a class="title__link" routerLink="/" routerLinkActive="active">  {{ title }}</a>
+            </h1>
+          </div>
+        </div>
       <div class="app__content">
         <router-outlet></router-outlet>
       </div>
