@@ -2,6 +2,20 @@
 
 }
 
+.dependents__title {
+    margin-bottom: 20px;
+}
+
+.dependents__button {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+.dependents__list {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
 .dependents__item {
-margin-bottom: 20px;
+    margin-bottom: 20px;
 }

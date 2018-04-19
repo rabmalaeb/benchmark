@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DragulaService } from 'ng2-dragula';
+import { WorkflowService } from '../workflow/workflow.service';
 
 @Component({
   selector: 'app-benefits',
@@ -7,11 +8,9 @@ import { DragulaService } from 'ng2-dragula';
   styleUrls: ['./benefits.component.scss']
 })
 
-
-
 export class BenefitsComponent implements OnInit {
 
-  constructor(private dragulaService: DragulaService) {
+  constructor(private dragulaService: DragulaService, private workflowService: WorkflowService) {
     dragulaService.dropModel.subscribe((value) => {
       this.onDropModel(value.slice(1));
     });
@@ -24,10 +23,15 @@ export class BenefitsComponent implements OnInit {
     'Meal', 'Travel', 'Phone', 'Accomodation'
   ];
 
-  selectedBenefits: Array<string> = [];
+  selectedBenefits: Array<String> = [];
   
   ngOnInit() {
-
+    this.selectedBenefits = this.workflowService.getBenefits();
+    console.log(this.selectedBenefits);
+    
+    if( this.selectedBenefits.length > 0 ) {  
+      this.benefits = this.benefits.filter(benefit => !this.selectedBenefits.includes(benefit))
+    }
   }
 
   private onDropModel(args) {
@@ -40,8 +44,9 @@ export class BenefitsComponent implements OnInit {
     // do something else
   }
 
-  next() {
-    console.log(this.selectedBenefits);
+  save() {
+    this.workflowService.setBenefits(this.selectedBenefits);
+    this.workflowService.getRouter().navigateByUrl('/new/summary');
   }
 }
 

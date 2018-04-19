@@ -8,7 +8,7 @@
           Name
         </div>
         <div class="form-item__input">
-          <input class="input-item" type="text">
+          <input class="input-item" type="text" [(ngModel)]="employeeInfo.name">
         </div>
       </div>
     </div>
@@ -18,7 +18,7 @@
           Date of Birth
         </div>
         <div class="form-item__input">
-            <ng-datepicker [(ngModel)]="date" [options]="options"></ng-datepicker>
+            <ng-datepicker [(ngModel)]="employeeInfo.dob" [options]="options"></ng-datepicker>
         </div>
       </div>
     </div>
@@ -28,11 +28,11 @@
           Salary
         </div>
         <div class="form-item__input">
-            <input class="input-item" type="text">
+            <input class="input-item" type="text" [(ngModel)] = "employeeInfo.salary">
         </div>
       </div>
     </div>
     <div class="new-employee__item">
-      <div class="button-item"> Next </div>
+      <div class="button-item" (click)="saveEmployee()"> Next </div>
   </div>
 </div>

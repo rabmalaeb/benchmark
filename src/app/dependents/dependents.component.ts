@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Dependent } from '../dependent';
+import { WorkflowService } from '../workflow/workflow.service';
+import { locateHostElement } from '@angular/core/src/render3/instructions';
 
 @Component({
   selector: 'app-dependents',
@@ -11,9 +13,10 @@ export class DependentsComponent implements OnInit {
   dependents: Array<Dependent> = [];
   numberOfDependents: number = 0;
   
-  constructor() { }
+  constructor(private workflowService: WorkflowService) { }
 
-  ngOnInit() {
+  ngOnInit() {    
+    this.dependents = this.workflowService.getDependents();
   }
 
   addDependent(): void {
@@ -26,7 +29,11 @@ export class DependentsComponent implements OnInit {
   delete(dependent: Dependent): void {
     let id = this.dependents.map(function(item) { return item.id; }).indexOf(dependent.id);
     this.dependents.splice(id, 1);
-    
+  }
+
+  save() {
+    this.workflowService.setDependents(this.dependents);
+    this.workflowService.getRouter().navigateByUrl('/new/benefits');
   }
 
 }

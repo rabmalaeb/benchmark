@@ -2,16 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { WorkflowService } from '../workflow/workflow.service';
 
 @Component({
-  selector: 'app-wizard',
-  templateUrl: './wizard.component.html',
-  styleUrls: ['./wizard.component.scss']
+  selector: 'app-summary',
+  templateUrl: './summary.component.html',
+  styleUrls: ['./summary.component.scss']
 })
-export class WizardComponent implements OnInit {
+export class SummaryComponent implements OnInit {
 
   constructor(private workflowService: WorkflowService) { }
 
   ngOnInit() {
-    console.log(this.workflowService);
+    console.log('summary is ', this.workflowService);
     
   }
 

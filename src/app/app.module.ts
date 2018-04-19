@@ -21,6 +21,8 @@ import { WizardComponent } from './wizard/wizard.component';
 import { DependentsComponent } from './dependents/dependents.component';
 import { BenefitsComponent } from './benefits/benefits.component';
 import { DependentItemComponent } from './dependent-item/dependent-item.component';
+import { WorkflowService } from './workflow/workflow.service';
+import { SummaryComponent } from './summary/summary.component';
 
 
 @NgModule({
@@ -36,6 +38,7 @@ import { DependentItemComponent } from './dependent-item/dependent-item.componen
     DependentsComponent,
     BenefitsComponent,
     DependentItemComponent,
+    SummaryComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ import { DependentItemComponent } from './dependent-item/dependent-item.componen
   ],
   providers: [
       EmployeeService,
-      DepartmentService
+      DepartmentService,
+      WorkflowService
   ],
   bootstrap: [AppComponent]
 })

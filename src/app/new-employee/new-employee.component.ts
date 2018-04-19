@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DatepickerOptions } from 'ng2-datepicker';
+import { WorkflowService } from '../workflow/workflow.service';
+import { EmployeeInfo } from '../workflow/workflow.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-employee',
@@ -19,9 +22,20 @@ export class NewEmployeeComponent implements OnInit {
     barTitleIfEmpty: 'Click to select a date'
   };
 
-  constructor() { }
+  date: Date;
+  employeeInfo: EmployeeInfo;
+
+  constructor(private workflowService: WorkflowService) { }
 
   ngOnInit() {
+    this.employeeInfo = this.workflowService.getEmployeeInfo();
+    console.log(' the employee is ', this.employeeInfo); 
+  }
+
+  saveEmployee() {
+    console.log(this.employeeInfo);
+    this.workflowService.setEmployeeInfo(this.employeeInfo);
+    this.workflowService.getRouter().navigateByUrl('/new/dependent');
   }
 
 }
