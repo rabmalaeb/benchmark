@@ -29,7 +29,6 @@ $table--border-color: #e6e9ee;
 
 .table__column{
   display: flex;
-  position: relative;
   background: #e6e9ee;
   color: #333;
 
@@ -42,7 +41,9 @@ $table--border-color: #e6e9ee;
   width: $table--item-width;
   padding: $table--item-padding;
   border-right: 1px solid $table--border-color;
-  &:last-child {
+  
+  &_is-last {
     border-right: 0px;
+    cursor: pointer;
   }
 }

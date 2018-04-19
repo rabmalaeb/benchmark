@@ -12,6 +12,8 @@ export class ElistItemComponent implements OnInit {
   @Input()
   employee: Employee;
   isEmployeeBoxOpen: boolean = false;
+  top: string = '0px';
+  left: string = '0px';
 
   constructor() { }
 
@@ -27,6 +29,10 @@ export class ElistItemComponent implements OnInit {
   editEmployee(employee: Employee, event: MouseEvent): void {
     this.employee = employee;
     this.isEmployeeBoxOpen = true;
+    this.left = `${event.clientX}px`;
+    this.top = `${event.clientY}px`;
+    console.log('left is ', event);
+    
   }
 
   

@@ -40,10 +40,9 @@ export class ViewEmployeeComponent implements OnInit {
   constructor(private departmentService: DepartmentService, private employeeService: EmployeeService) { }
 
   ngOnInit() {
-    console.log('state is', this.state);
-    
-      this.getDepartments();
-      this.getEmployee();
+    this.selectedDepartment = this.employee.department;
+    this.getDepartments();
+    this.getEmployee();
   }
 
   getEmployee(): void {

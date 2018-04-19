@@ -5,7 +5,7 @@
         <img class="x-employee__image" src={{employee.imageUrl}}>
       </div>
       <div class="x-employee__name">
-        {{employee.fullName}} {{state}}
+        {{employee.fullName}}
       </div>
     </div>
     <div class="x-employee__section">
@@ -15,7 +15,7 @@
         </div>
         <div class="form-item__input">
           <select class="input-item input-item_is-select" [(ngModel)]="selectedDepartment">
-            <option *ngFor="let department of departments" value={{department}} ngSelected="department==employee.department"> {{department}} </option>
+            <option *ngFor="let department of departments" value={{department}} > {{department}} </option>
           </select>
         </div>
       </div>
