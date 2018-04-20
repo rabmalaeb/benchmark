@@ -11,8 +11,6 @@ export class WizardComponent implements OnInit {
   constructor(private workflowService: WorkflowService) { }
 
   ngOnInit() {
-    console.log(this.workflowService);
-    
   }
 
 }

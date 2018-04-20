@@ -6,26 +6,56 @@ import { Router } from '@angular/router';
 @Injectable()
 export class WorkflowService {
 
+  /**
+   * contains the list of steps with their url 
+   * @type Array of Objects
+   */
   private workflow = [
-    { step: STEPS.personal, valid: false },
-    { step: STEPS.benefits, valid: false },
-    { step: STEPS.dependents, valid: false },
-    { step: STEPS.summary, valid: false }
-];
+    { step: STEPS.personal, url: '/new/personal', valid: false },
+    { step: STEPS.benefits, url: '/new/benefits', valid: false },
+    { step: STEPS.dependents, url: '/new/dependents', valid: false },
+    { step: STEPS.summary, url: '/new/summary', valid: false }
+  ];
 
-private currentStep: string = STEPS.personal;
-private employeeInfo: EmployeeInfo = new EmployeeInfo();
-private dependents: Array<Dependent> = [];
-private benefits: Array<String> = [];
+  /**
+   * 
+   */
+  private currentStep: string = STEPS.personal;
 
+  /**
+   * 
+   */
+  private employeeInfo: EmployeeInfo = new EmployeeInfo();
+
+  /**
+   * 
+   */
+  private dependents: Array<Dependent> = [];
+
+  /**
+   * 
+   */
+  private benefits: Array<String> = [];
+
+  /**
+   * 
+   * @param router 
+   */
   constructor(private router: Router) { 
     
   }
 
+  /**
+   * 
+   * @param step 
+   */
     setWorkflowStep(step: string) {
       this.currentStep = step;
     }
 
+    /**
+     * 
+     */
     getEmployeeInfo() {
       var employeeInfo: EmployeeInfo = {
         name: this.employeeInfo.name,
@@ -35,35 +65,55 @@ private benefits: Array<String> = [];
     return employeeInfo;
     }
 
+    /**
+     * set the employeeInfo name, dob and salary
+     * @param data 
+     */
     setEmployeeInfo(data: EmployeeInfo) {
-
       this.employeeInfo.name = data.name;
       this.employeeInfo.dob = data.dob;
       this.employeeInfo.salary = data.salary;
     }
 
+    /**
+     * @returns Array of string
+     */
     getBenefits() {
       return this.benefits;
     }
 
+    /**
+     * 
+     * @param data 
+     */
     setBenefits(data: Array<String>) {
       this.benefits = data;
     }
 
+    /**
+     * @returns Array of Dependent
+     */
     getDependents() {
       return this.dependents;
     }
 
+    /**
+     * set dependents 
+     * @param data array of Dependent
+     */
     setDependents(data: Array<Dependent>) {
       this.dependents = data;
     }
 
+    /**
+     * get the route of the specified step from the worflow object
+     * go to the route
+     * @param step the step to go to 
+     */
     goToStep(step: string) {
+      let nextStep = this.workflow.find(work => work.step == step);      
+      this.router.navigateByUrl(nextStep.url);
 
-    }
-
-    getRouter() {
-      return this.router;
     }
 
 }

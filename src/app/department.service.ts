@@ -10,13 +10,21 @@ import { Department } from './department';
 @Injectable()
 export class DepartmentService {
 
-  private departmentUrl = 'http://employees-api.azurewebsites.net/api/Departments';  // URL to web api
+  /**
+   * url to get the list of Departments from the server
+   */
+  private departmentUrl: string = 'http://employees-api.azurewebsites.net/api/Departments';
 
-  constructor(
-    private http: HttpClient,
-  ) { }
+  /**
+   * Inject the HttpClient to the department service
+   * @param http HttpClient instance
+   */
+  constructor(private http: HttpClient) {}
 
-  /** GET Departments from the server */
+  /**
+   * GET Departments from the server 
+   * @returns an Observable of Department
+   */
  getDepartments (): Observable<Department[]> {
    return this.http.get<Department[]>(this.departmentUrl)
  }

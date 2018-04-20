@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DragulaService } from 'ng2-dragula';
 import { WorkflowService } from '../workflow/workflow.service';
+import { STEPS } from '../workflow/workflow.model';
 
 @Component({
   selector: 'app-benefits',
@@ -19,15 +20,18 @@ export class BenefitsComponent implements OnInit {
     });
    }
 
-   benefits: Array<string> = [
-    'Meal', 'Travel', 'Phone', 'Accomodation'
-  ];
+   title: string = "Employee Benefits";
+   benefits: Array<string> = [ 'Meal', 'Travel', 'Phone', 'Accomodation'];
+   selectedBenefits: Array<String> = [];
 
-  selectedBenefits: Array<String> = [];
-  
+  /**
+   * Initializes Benefits Component 
+   * get the selectedbenefits from the workflowservice
+   * Remove already selected benefits from the original benefits array
+   * 
+   */
   ngOnInit() {
     this.selectedBenefits = this.workflowService.getBenefits();
-    console.log(this.selectedBenefits);
     
     if( this.selectedBenefits.length > 0 ) {  
       this.benefits = this.benefits.filter(benefit => !this.selectedBenefits.includes(benefit))
@@ -44,9 +48,13 @@ export class BenefitsComponent implements OnInit {
     // do something else
   }
 
+  /**
+   * update the benefits in the workflowservice
+   * Go to the next step 
+   */
   save() {
     this.workflowService.setBenefits(this.selectedBenefits);
-    this.workflowService.getRouter().navigateByUrl('/new/summary');
+    this.workflowService.goToStep(STEPS.summary);
   }
 }
 

@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: '', component: ListEmployeesComponent },
   { path: 'new', component: WizardComponent, children: [
     { path: '', component: NewEmployeeComponent},
-    { path: 'dependent', component: DependentsComponent},
+    { path: 'dependents', component: DependentsComponent},
     { path: 'benefits', component: BenefitsComponent},
     { path: 'summary', component: SummaryComponent}
   ] },

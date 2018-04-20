@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Dependent } from '../dependent';
 import { WorkflowService } from '../workflow/workflow.service';
 import { locateHostElement } from '@angular/core/src/render3/instructions';
+import { STEPS } from '../workflow/workflow.model';
 
 @Component({
   selector: 'app-dependents',
@@ -10,15 +11,34 @@ import { locateHostElement } from '@angular/core/src/render3/instructions';
 })
 export class DependentsComponent implements OnInit {
 
+  /**
+   * Array of Dependents which holds the dependets that are added by the user
+   */
   dependents: Array<Dependent> = [];
+
+  /**
+   * holds the current value of dependets
+   */
   numberOfDependents: number = 0;
+  /**
+   * Title of the page
+   */
+  title: string = "Employee Dependents";
   
   constructor(private workflowService: WorkflowService) { }
 
+  /**
+   * get the dependents form the workflowservice
+   * set it to the dependets array which is populated in the view
+   */
   ngOnInit() {    
     this.dependents = this.workflowService.getDependents();
   }
-
+  
+  /**
+   * create a new Dependent
+   * add it to the dependets array
+   */
   addDependent(): void {
     let dependent = new Dependent();
     dependent.id = this.numberOfDependents;
@@ -26,14 +46,22 @@ export class DependentsComponent implements OnInit {
     this.dependents.push(dependent);
   }
 
+  /**
+   * remove the dependent from the array of dependents
+   * @param dependent the dependent to be deleted
+   */
   delete(dependent: Dependent): void {
     let id = this.dependents.map(function(item) { return item.id; }).indexOf(dependent.id);
     this.dependents.splice(id, 1);
   }
 
+ /**
+   * update the dependents in the workflowservice
+   * Go to the next step 
+   */
   save() {
     this.workflowService.setDependents(this.dependents);
-    this.workflowService.getRouter().navigateByUrl('/new/benefits');
+    this.workflowService.goToStep(STEPS.benefits);
   }
 
 }

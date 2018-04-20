@@ -3,6 +3,7 @@ import { DatepickerOptions } from 'ng2-datepicker';
 import { WorkflowService } from '../workflow/workflow.service';
 import { EmployeeInfo } from '../workflow/workflow.model';
 import { Router } from '@angular/router';
+import { STEPS } from '../workflow/workflow.model';
 
 @Component({
   selector: 'app-new-employee',
@@ -24,18 +25,24 @@ export class NewEmployeeComponent implements OnInit {
 
   date: Date;
   employeeInfo: EmployeeInfo;
+  title: string = "Employee Information";
 
   constructor(private workflowService: WorkflowService) { }
 
+  /**
+   * get the employeeInfo from the workflow service and set it to employeeInfo
+   */
   ngOnInit() {
     this.employeeInfo = this.workflowService.getEmployeeInfo();
-    console.log(' the employee is ', this.employeeInfo); 
   }
 
+/**
+   * update the employeeInfo in the workflowservice
+   * Go to the next step ( Dependents )
+   */
   saveEmployee() {
-    console.log(this.employeeInfo);
     this.workflowService.setEmployeeInfo(this.employeeInfo);
-    this.workflowService.getRouter().navigateByUrl('/new/dependent');
+    this.workflowService.goToStep(STEPS.dependents);
   }
 
 }

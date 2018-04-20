@@ -1,4 +1,9 @@
 <div class="benefits">
+  <div class="benefits__title">
+    <div class="title">
+        {{title}}
+    </div>
+  </div>
   <div class="benefits__content">
     <div class='benefits__available' [dragula]='"another-bag"' [dragulaModel]='benefits'>
       <div class="benefits__item" *ngFor='let text of benefits' [innerHtml]='text'></div>

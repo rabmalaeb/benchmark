@@ -10,9 +10,10 @@ export class SummaryComponent implements OnInit {
 
   constructor(private workflowService: WorkflowService) { }
 
+  title: string = "New Employee Summary";
+
   ngOnInit() {
-    console.log('summary is ', this.workflowService);
-    
+
   }
 
 }

@@ -11,19 +11,33 @@ export class DependentItemComponent implements OnInit {
 
   constructor() { }
 
+  /**
+   * Binded Dependent that is sent from the parent
+   * @type Dependent
+   */
   @Input() dependent: Dependent;
+
+  /**
+   * true if the parent should delete this dependent-item
+   * @type EventEmitter<boolean> true, false
+   */
   @Output() deleteDependent: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+
   ngOnInit() {
-   console.log(this.dependent);
   }
 
-  onKey(event: any) { // without type info
+  /**
+   * set the name of the dependent to the value of the event target
+   * @param event key event
+   */
+  onKeyUp(event: any) {
     this.dependent.name = event.target.value;
-    console.log(this.dependent);
-    
   }
 
+  /**
+   * send an Event Emitter that signals the parent to delete this item
+   */
   onDelete() {
     this.deleteDependent.emit(true);
   }

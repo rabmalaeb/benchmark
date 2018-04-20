@@ -9,16 +9,29 @@ import { Employee } from '../employee';
 })
 export class ElistItemComponent implements OnInit {
 
-  @Input()
-  employee: Employee;
+  /**
+   * 
+   */
+  @Input() employee: Employee;
+
+  /**
+   * 
+   */
   isEmployeeBoxOpen: boolean = false;
+
+  /**
+   * 
+   */
   top: string = '0px';
+
+  /**
+   * 
+   */
   left: string = '0px';
 
   constructor() { }
 
   ngOnInit() {
-
   }
 
 /**
@@ -31,8 +44,6 @@ export class ElistItemComponent implements OnInit {
     this.isEmployeeBoxOpen = true;
     this.left = `${event.clientX}px`;
     this.top = `${event.clientY}px`;
-    console.log('left is ', event);
-    
   }
 
   
