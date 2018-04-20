@@ -1,38 +1,42 @@
 <div class="new-employee">
-  <div class="new-employee__title">
+  <div class="new-employee__title"> </div>
+    <div class="new-employee__section">
+      <div class="new-employee__item">
+        <div class="form-item">
+          <div class="form-item__label">
+            Name
+          </div>
+          <div class="form-item__input">
+            <input class="input-item" type="text" [(ngModel)]="employeeInfo.name">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="new-employee__section">
+      <div class="new-employee__item">
+        <div class="form-item">
+          <div class="form-item__label">
+            Salary
+          </div>
+          <div class="form-item__input">
+              <input class="input-item" type="text" [(ngModel)] = "employeeInfo.salary">
+          </div>
+        </div>
+      </div>
+      <div class="new-employee__item">
+        <div class="form-item">
+          <div class="form-item__label">
+            Date of Birth
+          </div>
+          <div class="form-item__input">
+              <ng-datepicker [(ngModel)]="employeeInfo.dob" [options]="options"></ng-datepicker>
+          </div>
+        </div>
+      </div>
   </div>
   <div class="new-employee__section">
-    <div class="new-employee__item">
-      <div class="form-item">
-        <div class="form-item__label">
-          Name
-        </div>
-        <div class="form-item__input">
-          <input class="input-item" type="text" [(ngModel)]="employeeInfo.name">
-        </div>
-      </div>
-    </div>
-    <div class="new-employee__item">
-      <div class="form-item">
-        <div class="form-item__label">
-          Date of Birth
-        </div>
-        <div class="form-item__input">
-            <ng-datepicker [(ngModel)]="employeeInfo.dob" [options]="options"></ng-datepicker>
-        </div>
-      </div>
-    </div>
-    <div class="new-employee__item">
-      <div class="form-item">
-        <div class="form-item__label">
-          Salary
-        </div>
-        <div class="form-item__input">
-            <input class="input-item" type="text" [(ngModel)] = "employeeInfo.salary">
-        </div>
-      </div>
-    </div>
-    <div class="new-employee__item">
+    <div class="new-employee__item new-employee__item_is-fixed">
       <div class="button-item" (click)="saveEmployee()"> Next </div>
+    </div>
   </div>
 </div>

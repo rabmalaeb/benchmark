@@ -1,15 +1,22 @@
 .form-item {
   display: flex;
+  flex-direction: column;
   width: 100%;
-  align-items: center;
+
+  &_is-inline {
+    flex-direction: initial;
+    align-items: center;
+
+    .form-item__label {
+      margin-right: 10px;
+    }
+  }
 }
 
 .form-item__label {
-  margin-right: 20px;
-  font-size: 18px;
+  font-size: 16px;
   color: rgba(0,0,0,0.8);
-  margin-right: 20px;
-  min-width: 150px;
+  margin-bottom: 10px;
 }
 
 .form-item__name {

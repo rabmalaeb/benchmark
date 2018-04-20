@@ -4,6 +4,16 @@
 
 .new-employee__item {
   margin-bottom: 20px;
+  width: 100%;
+  margin-right: 10px;
+
+  &:last-child {
+    margin-right: 0px;
+  }
+
+  &_is-fixed {
+    width: 200px;
+  }
 }
 
 .new-employee__title {
@@ -13,5 +23,7 @@
 
 .new-employee__section {
   display: flex;
-  flex-direction: column;
+  margin-bottom: 10px;
 }
+
+
