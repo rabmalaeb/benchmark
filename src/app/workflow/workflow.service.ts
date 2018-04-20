@@ -35,7 +35,7 @@ export class WorkflowService {
   /**
    * 
    */
-  private benefits: Array<String> = [];
+  private benefits: Array<string> = [];
 
   /**
    * 
@@ -86,7 +86,7 @@ export class WorkflowService {
      * 
      * @param data 
      */
-    setBenefits(data: Array<String>) {
+    setBenefits(data: Array<string>) {
       this.benefits = data;
     }
 

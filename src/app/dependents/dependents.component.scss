@@ -12,7 +12,11 @@
 }
 
 .dependents__list {
-    max-height: 500px;
+    max-height: 400px;
+    height: 400px;
+    margin-bottom: 20px;
+    padding: 10px 5px;
+    border: 1px solid #d6d6d6;
     overflow-y: auto;
 }
 

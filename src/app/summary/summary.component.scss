@@ -5,3 +5,20 @@
 .summary__title {
     margin-bottom: 20px;
 }
+
+.summary__section {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #d6d6d6;
+}
+
+.summary__section-title {
+    color: #5fbbe7;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.summary__section-content {
+    display: flex;
+    flex-direction: column;
+}

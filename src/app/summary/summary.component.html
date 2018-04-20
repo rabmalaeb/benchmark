@@ -1,7 +1,54 @@
 <div class="summary">
   <div class="summary__title">
     <div class="title">
-        {{title}}
+      {{title}}
+    </div>
+  </div>
+  <div class="summary__content">
+    <div class="summary__section">
+      <div class="summary__section-title"> Employee Information </div>
+      <div class="summary__section-content">
+        <div class="employee-item">
+          <div class="employee-item__label">
+            Name
+          </div>
+          <div class="employee-item__value">
+              {{employeeInfo.name}}
+          </div>
+        </div>
+        <div class="employee-item">
+          <div class="employee-item__label">
+              Salary
+          </div>
+          <div class="employee-item__value">
+            {{employeeInfo.salary}}
+          </div>
+        </div>
+        <div class="employee-item">
+          <div class="employee-item__label">
+            Date of Birth
+          </div>
+          <div class="employee-item__value">
+            {{employeeInfo.dob}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="summary__section">
+      <div class="summary__section-title"> Employee Information </div>
+      <div class="summary__section-content">
+        <div class="benefit-item" *ngFor="let benefit of benefits">
+          {{benefit}}
+        </div>
+      </div>
+    </div>
+    <div class="summary__section">
+      <div class="summary__section-title"> Employee Information </div>
+      <div class="summary__section-content">
+        <div class="dependent-item" *ngFor="let dependent of dependents">
+          {{dependent.name}}
+        </div>
+      </div>
     </div>
   </div>
 </div>

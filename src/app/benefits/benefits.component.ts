@@ -22,7 +22,7 @@ export class BenefitsComponent implements OnInit {
 
    title: string = "Employee Benefits";
    benefits: Array<string> = [ 'Meal', 'Travel', 'Phone', 'Accomodation'];
-   selectedBenefits: Array<String> = [];
+   selectedBenefits: Array<string> = [];
 
   /**
    * Initializes Benefits Component 

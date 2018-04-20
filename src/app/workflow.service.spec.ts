@@ -1,6 +1,5 @@
 import { TestBed, inject } from '@angular/core/testing';
-
-import { WorkflowService } from './workflow.service';
+import { WorkflowService } from './workflow/workflow.service';
 
 describe('WorkflowService', () => {
   beforeEach(() => {
