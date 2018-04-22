@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WorkflowService } from '../workflow/workflow.service';
 import { Dependent } from '../dependent';
 import { EmployeeInfo } from '../workflow/workflow.model';
+import { STEPS } from '../workflow/workflow.model';
 
 @Component({
   selector: 'app-summary',
@@ -17,7 +18,19 @@ export class SummaryComponent implements OnInit {
   employeeInfo: EmployeeInfo;
   benefits: Array<string> = [];
 
+  get diagnostic() { 
+    let summary: Array<string> = [];
+    summary.push(JSON.stringify(this.employeeInfo))
+    summary.push(JSON.stringify(this.benefits))
+    summary.push(JSON.stringify(this.dependents))
+
+    return summary; 
+  }
+
   ngOnInit() {
+    if(!this.workflowService.isBenefitsValid()) {
+      this.workflowService.goToStep(STEPS.benefits);
+    }
     this.dependents = this.workflowService.getDependents();
     this.employeeInfo = this.workflowService.getEmployeeInfo();
     this.benefits = this.workflowService.getBenefits();

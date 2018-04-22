@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { STEPS, EmployeeInfo } from './workflow.model';
 import { Dependent } from '../dependent';
 import { Router } from '@angular/router';
+import { isEmpty } from 'rxjs/operators';
 
 @Injectable()
 export class WorkflowService {
@@ -11,7 +12,7 @@ export class WorkflowService {
    * @type Array of Objects
    */
   private workflow = [
-    { step: STEPS.personal, url: '/new/personal', valid: false },
+    { step: STEPS.personal, url: '/new', valid: false },
     { step: STEPS.benefits, url: '/new/benefits', valid: false },
     { step: STEPS.dependents, url: '/new/dependents', valid: false },
     { step: STEPS.summary, url: '/new/summary', valid: false }
@@ -114,6 +115,25 @@ export class WorkflowService {
       let nextStep = this.workflow.find(work => work.step == step);      
       this.router.navigateByUrl(nextStep.url);
 
+    }
+
+    /**
+     * @returns boolean true if valid, false if not valid
+     */
+    isEmployeeInfoValid() {
+      let employeeInfo = this.getEmployeeInfo();
+      if(!employeeInfo.dob  || !employeeInfo.salary || !employeeInfo.name) {
+        return false;
+      }
+      return true;
+    }
+
+    isBenefitsValid() {
+      return this.benefits.length === 0 ? false : true;
+    }
+
+    isDependentsValid() {
+      return this.dependents.length === 0 ? false : true;
     }
 
 }

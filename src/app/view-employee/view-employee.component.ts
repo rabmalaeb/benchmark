@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { trigger,state, style, animate, transition } from '@angular/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModel } from '@angular/forms';
 import { Employee } from '../employee';
 import { EmployeeService } from '../employee.service';
@@ -21,13 +22,14 @@ import { locateHostElement } from '@angular/core/src/render3/instructions';
       state('opened',   style({
         opacity: '1'
       })),
-      transition('inactive => active', animate('900ms ease-in')),
-      transition('active => inactive', animate('900ms ease-out'))
+      transition('closed => opened', animate('900ms ease-in')),
+      transition('opened => closed', animate('900ms ease-out'))
     ])
   ]
 })
 export class ViewEmployeeComponent implements OnInit {
 
+  private employeeToUpdate: Employee;
   @Input() employee: Employee;
   @Input() isEmployeeBoxOpen: boolean = true;
   @Output() closeEmployeeBox: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -48,7 +50,7 @@ export class ViewEmployeeComponent implements OnInit {
   getEmployee(): void {
     this.employeeService.getEmployee(this.employee.employeeId)
     .toPromise()
-    .then(employee => this.employee = employee);
+    .then(employee => this.employeeToUpdate = employee);
   }
 
   getDepartments(): void {
@@ -59,7 +61,8 @@ export class ViewEmployeeComponent implements OnInit {
   onSave(): void {
     this.isSaving = true;
     this.employee.department = this.selectedDepartment;
-    this.employeeService.updateEmployeeDepartment(this.employee)
+    this.employeeToUpdate.department = this.selectedDepartment;
+    this.employeeService.updateEmployeeDepartment(this.employeeToUpdate)
     .toPromise()
     .then( resp => this.isSaving = false)
    }

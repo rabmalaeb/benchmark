@@ -1,12 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Employee } from '../employee';
+import { HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'elist-item',
   templateUrl: './elist-item.component.html',
   styleUrls: ['./elist-item.component.scss']
 })
+
 export class ElistItemComponent implements OnInit {
 
   /**
@@ -29,6 +31,11 @@ export class ElistItemComponent implements OnInit {
    */
   left: string = '0px';
 
+  /**
+   * 
+   */
+  right: string = '0px';
+
   constructor() { }
 
   ngOnInit() {
@@ -40,10 +47,16 @@ export class ElistItemComponent implements OnInit {
  * @param {MouseEvent} event        [description]
  */
   editEmployee(employee: Employee, event: MouseEvent): void {
+    this.top = `${event.clientY}px`;
+    let screenWidth = window.screen.width;
+    if(screenWidth - event.clientX < 400 ) {
+      this.left='auto';
+      this.right=`${screenWidth - event.clientX}px`;
+    } else {
+      this.left = `${event.clientX}px`;
+    }
     this.employee = employee;
     this.isEmployeeBoxOpen = true;
-    this.left = `${event.clientX}px`;
-    this.top = `${event.clientY}px`;
   }
 
   

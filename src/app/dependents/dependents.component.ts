@@ -20,11 +20,16 @@ export class DependentsComponent implements OnInit {
    * holds the current value of dependets
    */
   numberOfDependents: number = 0;
+
   /**
    * Title of the page
    */
   title: string = "Employee Dependents";
   
+  /**
+   * 
+   * @param workflowService 
+   */
   constructor(private workflowService: WorkflowService) { }
 
   /**
@@ -32,6 +37,9 @@ export class DependentsComponent implements OnInit {
    * set it to the dependets array which is populated in the view
    */
   ngOnInit() {    
+    if(!this.workflowService.isEmployeeInfoValid()) {
+      this.workflowService.goToStep(STEPS.personal);
+    }
     this.dependents = this.workflowService.getDependents();
   }
   

@@ -8,6 +8,9 @@
     <div class="summary__section">
       <div class="summary__section-title"> Employee Information </div>
       <div class="summary__section-content">
+
+        {{diagnostic}}
+
         <div class="employee-item">
           <div class="employee-item__label">
             Name
@@ -29,7 +32,7 @@
             Date of Birth
           </div>
           <div class="employee-item__value">
-            {{employeeInfo.dob}}
+            {{employeeInfo.dob | date:"MM/dd/yyyy"}}
           </div>
         </div>
       </div>

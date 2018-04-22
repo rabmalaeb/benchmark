@@ -20,11 +20,6 @@ export class AppPagerComponent implements OnInit {
   /**
    * 
    */
-  previousId: number; 
-
-  /**
-   * 
-   */
   pages: Array<ResultPage> = [];
 
   /**
@@ -32,10 +27,6 @@ export class AppPagerComponent implements OnInit {
    */
   itemsPerPage: number = 10;
 
-  /**
-   * 
-   */
-  currentPage: number = 0;
 
   /**
    * 
@@ -63,8 +54,8 @@ export class AppPagerComponent implements OnInit {
         if(this.employees.length < this.itemsPerPage) {
           this.employees.push(employee);
         }
-     }) 
-     this.addPage(employees[employees.length - 1].employeeId);
+     })      
+     this.addPage(this.employees[this.employees.length - 1].employeeId);     
     })
   }
 
@@ -72,9 +63,9 @@ export class AppPagerComponent implements OnInit {
    * 
    */
   getNextPage() {
-   let nextId = this.pages[this.currentPage].lastEmployeeId;
-   this.currentPage++;
-   this.employeeService.getNextEmployees(nextId)
+
+    console.log('pages length ', this.pages.length);
+   this.employeeService.getNextEmployees(this.pages[this.pages.length - 1].lastEmployeeId)
    .toPromise()
    .then (employees => {
       this.employees = employees;
@@ -89,13 +80,21 @@ export class AppPagerComponent implements OnInit {
    * get the next 10 customers starting from the lastEmployeeId of the previous page
    */
   getPreviousPage() {
-    if(this.currentPage > 0) {
-      this.removePage();
-      this.currentPage--;
-      let lastPage = this.pages[this.pages.length -1 ];
-      this.employeeService.getNextEmployees(lastPage.lastEmployeeId)
-      .toPromise()
-      .then (employees => this.employees = employees)
+    console.log('pages length ', this.pages.length);
+    
+    switch(this.pages.length) {
+      case 1: 
+        this.removePage();
+        this.getNextPage();
+      break;
+      case 0: 
+        this.getEmployees();
+      break;
+      default: 
+        this.removePage();
+        this.removePage();
+        this.getNextPage();
+      break;
     }
    }
 
@@ -105,7 +104,7 @@ export class AppPagerComponent implements OnInit {
     */
    addPage(lastEmployeeId: number) {
     let page = new ResultPage();
-    page.pageNumber = this.currentPage + 1;
+    page.pageNumber = this.pages.length;
     page.lastEmployeeId = lastEmployeeId;
     this.pages.push(page);
    }
@@ -116,6 +115,10 @@ export class AppPagerComponent implements OnInit {
     */
    removePage() {
      this.pages.pop();
+   }
+
+   getCurrentPage() {
+     return this.pages.length;
    }
 
 }

@@ -2,6 +2,8 @@
 <div class="table__column-item">{{employee.dob | date:"MM/dd/yyyy"}}</div>
 <div class="table__column-item table__column-item_is-last" (click)="editEmployee(employee, $event)">{{employee.department}}</div>
 
-<div #employeeBox class="employee-box" [style.top]="top" [style.left]="left" [class.employee-box_is-active]="isEmployeeBoxOpen">
-    <app-view-employee *ngIf="isEmployeeBoxOpen"  [employee]="employee" (closeEmployeeBox)="closeEmployeeBox($event)"></app-view-employee>
+<div class="employee-box__overlay" [class.employee-box__overlay_is-active]="isEmployeeBoxOpen">
+    <div #employeeBox class="employee-box" [style.top]="top" [style.left]="left" [style.right]="right">
+        <app-view-employee *ngIf="isEmployeeBoxOpen" [employee]="employee" (closeEmployeeBox)="closeEmployeeBox($event)"></app-view-employee>
+    </div>
 </div>

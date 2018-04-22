@@ -4,6 +4,7 @@
   padding: 10px;
   cursor: pointer;
   text-align: center;
+  width: 100%;
 
   &:hover {
     background: rgba(0,0,0,1);
@@ -17,5 +18,9 @@
     &:hover {
       background: rgba(65, 30, 30, 0.8);
     }
+  }
+
+  &:disabled {
+    background-color: #b2b2b2
   }
 }

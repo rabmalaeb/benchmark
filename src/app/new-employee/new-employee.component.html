@@ -4,43 +4,54 @@
           {{title}}
       </div>
     </div>
-    <div class="new-employee__section">
-      <div class="new-employee__item">
-        <div class="form-item">
-          <div class="form-item__label">
-            Name
-          </div>
-          <div class="form-item__input">
-            <input class="input-item" type="text" [(ngModel)]="employeeInfo.name">
+    <form (ngSubmit)="saveEmployee()" #employeeInfoForm="ngForm">
+      <div class="new-employee__section">
+        <div class="new-employee__item">
+          <div class="form-item">
+            <div class="form-item__label">
+              Name
+            </div>
+            <div class="form-item__input">
+              <input class="input-item" required type="text" required [(ngModel)]="employeeInfo.name" name="name" #name="ngModel">
+            </div>
+            <div [hidden]="name.valid || name.pristine" class="form-item__error">
+                Name is required
+            </div>
           </div>
         </div>
       </div>
+      <div class="new-employee__section">
+        <div class="new-employee__item">
+          <div class="form-item">
+            <div class="form-item__label">
+              Salary
+            </div>
+            <div class="form-item__input">
+                <input class="input-item" required type="text" [(ngModel)] = "employeeInfo.salary" name="salary" #salary="ngModel">
+            </div>
+            <div [hidden]="salary.valid || salary.pristine" class="form-item__error">
+                Salary is required
+            </div>
+          </div>
+        </div>
+        <div class="new-employee__item">
+          <div class="form-item">
+            <div class="form-item__label">
+              Date of Birth
+            </div>
+            <div class="form-item__input">
+                <ng-datepicker [(ngModel)]="employeeInfo.dob" [options]="options" name="date" #date="ngModel"></ng-datepicker>
+            </div>
+            <div [hidden]="date.valid || date.pristine" class="form-item__error">
+                Date is required
+            </div>
+          </div>
+        </div>
     </div>
     <div class="new-employee__section">
-      <div class="new-employee__item">
-        <div class="form-item">
-          <div class="form-item__label">
-            Salary
-          </div>
-          <div class="form-item__input">
-              <input class="input-item" type="text" [(ngModel)] = "employeeInfo.salary">
-          </div>
-        </div>
+      <div class="new-employee__item new-employee__item_is-fixed">
+        <button type="submit" class="button-item" [disabled]="!employeeInfoForm.form.valid"> Next </button>
       </div>
-      <div class="new-employee__item">
-        <div class="form-item">
-          <div class="form-item__label">
-            Date of Birth
-          </div>
-          <div class="form-item__input">
-              <ng-datepicker [(ngModel)]="employeeInfo.dob" [options]="options"></ng-datepicker>
-          </div>
-        </div>
-      </div>
-  </div>
-  <div class="new-employee__section">
-    <div class="new-employee__item new-employee__item_is-fixed">
-      <div class="button-item" (click)="saveEmployee()"> Next </div>
     </div>
-  </div>
+  </form> 
 </div>

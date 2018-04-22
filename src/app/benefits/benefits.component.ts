@@ -31,6 +31,9 @@ export class BenefitsComponent implements OnInit {
    * 
    */
   ngOnInit() {
+    if(!this.workflowService.isDependentsValid()) {
+      this.workflowService.goToStep(STEPS.dependents);
+    }
     this.selectedBenefits = this.workflowService.getBenefits();
     
     if( this.selectedBenefits.length > 0 ) {  

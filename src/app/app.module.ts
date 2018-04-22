@@ -10,7 +10,6 @@ import { DragulaModule } from 'ng2-dragula';
 
 
 import { AppComponent } from './app.component';
-import { ListEmployeesComponent } from './list-employees/list-employees.component';
 import { NewEmployeeComponent } from './new-employee/new-employee.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { NavComponent } from './nav/nav.component';
@@ -28,7 +27,6 @@ import { SummaryComponent } from './summary/summary.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ListEmployeesComponent,
     NewEmployeeComponent,
     NavComponent,
     ViewEmployeeComponent,

@@ -26,3 +26,9 @@
 .form-item__input {
   flex: auto;
 }
+
+.form-item__error {
+  background-color: #b79898;
+  color: #fff;
+  padding: 10px; 
+}
