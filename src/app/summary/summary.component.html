@@ -37,7 +37,7 @@
     <div class="summary__section">
       <div class="summary__section-title"> Employee Benefits </div>
       <div class="summary__section-content">
-        <div class="benefit-item" *ngFor="let benefit of benefits">
+        <div class="summary__item" *ngFor="let benefit of benefits">
           {{benefit}}
         </div>
       </div>
@@ -45,7 +45,7 @@
     <div class="summary__section">
       <div class="summary__section-title"> Employee Dependents </div>
       <div class="summary__section-content">
-        <div class="dependent-item" *ngFor="let dependent of dependents">
+        <div class="summary__item" *ngFor="let dependent of dependents">
           {{dependent.name}}
         </div>
       </div>

@@ -27,10 +27,10 @@
               Salary
             </div>
             <div class="form-item__input">
-                <input class="input-item" required type="text" [(ngModel)] = "employeeInfo.salary" name="salary" #salary="ngModel">
+                <input class="input-item" pattern="^[0-9]+$" required type="text" [(ngModel)] = "employeeInfo.salary" name="salary" #salary="ngModel">
             </div>
             <div [hidden]="salary.valid || salary.pristine" class="form-item__error">
-                Salary is required
+                Salary is required & should be numeric
             </div>
           </div>
         </div>

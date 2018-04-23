@@ -36,11 +36,6 @@ export class ElistItemComponent implements OnInit {
    */
   right: string = '0px';
 
-  /**
-   * @type string
-   */
-  bottom: string = '0px';
-
   constructor() { }
 
   ngOnInit() {
@@ -52,9 +47,27 @@ export class ElistItemComponent implements OnInit {
    * @param event 
    */
   editEmployee(employee: Employee, event: MouseEvent): void {
- 
-    let screenWidth = window.screen.width;
+    this.setPosition(event);
+    this.employee = employee;
+    this.isEmployeeBoxOpen = true;
+  }
+
+  /**
+   * 
+   * 
+   */
+  closeEmployeeBox() {
+    this.isEmployeeBoxOpen = false;
+  }
+
+  /**
+   * 
+   * @param event 
+   */
+  setPosition(event: MouseEvent) {
+    let screenWidth = window.screen.availWidth;
     let screenHeight = window.screen.availHeight;
+        
     if(screenWidth - event.clientX < 400 ) {
       this.left = 'auto';
       this.right = `${screenWidth - event.clientX}px`;
@@ -62,22 +75,10 @@ export class ElistItemComponent implements OnInit {
       this.left = `${event.clientX}px`;
     }
     if(screenHeight - event.clientY < 400) {
-      this.top = 'auto';
-      this.bottom = `${screenHeight - event.clientY}px`;
+      this.top = `${event.clientY - 280}px`; // 280ps is the height of the employee box
     } else {
       this.top = `${event.clientY}px`;
-      this.bottom = 'auto';
     }
-    this.employee = employee;
-    this.isEmployeeBoxOpen = true;
-  }
-
-  /**
-   * 
-   * @param event 
-   */
-  closeEmployeeBox(event) {
-    this.isEmployeeBoxOpen = !event;
   }
 
 

@@ -19,12 +19,12 @@ export class SummaryComponent implements OnInit {
   benefits: Array<string> = [];
 
   get diagnostic() { 
-    let summary: Array<string> = [];
-    summary.push(JSON.stringify(this.employeeInfo))
-    summary.push(JSON.stringify(this.benefits))
-    summary.push(JSON.stringify(this.dependents))
+    let summary: Array<object> = [];
+    summary.push({Employee: this.employeeInfo});
+    summary.push({Benefits: this.benefits});
+    summary.push({Dependents: this.dependents});
 
-    return summary; 
+    return JSON.stringify(summary); 
   }
 
   ngOnInit() {
@@ -38,3 +38,4 @@ export class SummaryComponent implements OnInit {
   }
 
 }
+

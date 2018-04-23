@@ -12,6 +12,9 @@ import { STEPS } from '../workflow/workflow.model';
 })
 export class NewEmployeeComponent implements OnInit {
 
+  /**
+   * DatePicker Options to set the format and other settings
+   */
   options: DatepickerOptions = {
     minYear: 1918,
     maxYear: 2018,
@@ -23,10 +26,25 @@ export class NewEmployeeComponent implements OnInit {
     barTitleIfEmpty: 'Click to select a date'
   };
 
+  /**
+   * @type Date holds the date value
+   */
   date: Date;
+
+  /**
+   * @type EmployeeInfo 
+   */
   employeeInfo: EmployeeInfo;
+
+  /**
+   * @type string title of the component
+   */
   title: string = "Employee Information";
 
+  /**
+   * Injects the workflow service
+   * @param workflowService 
+   */
   constructor(private workflowService: WorkflowService) { }
 
   /**
