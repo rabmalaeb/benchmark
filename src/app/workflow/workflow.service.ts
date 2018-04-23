@@ -133,6 +133,8 @@ export class WorkflowService {
     }
 
     isDependentsValid() {
+      console.log('dependents ', this.dependents);
+      
       return this.dependents.length === 0 ? false : true;
     }
 

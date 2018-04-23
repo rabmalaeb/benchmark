@@ -13,12 +13,13 @@ import { ResultPage } from '../result-page';
 export class AppPagerComponent implements OnInit {
 
   /**
-   * 
+   * array to hold the list of employees
    */
-  @Input()employees: Employee[] = [];
+  @Input()employees: Array<Employee> = [];
 
   /**
-   * 
+   * array to hold the ResultPage
+   * which contain the 
    */
   pages: Array<ResultPage> = [];
 
@@ -35,18 +36,23 @@ export class AppPagerComponent implements OnInit {
   constructor(private employeeService: EmployeeService) { }
 
   /**
-   * Call getEmployees function
+   * Call getNextPage function
    */
   ngOnInit() {
-    this.getEmployees();
+    this.getNextPage();
   }
 
   /**
+   * reset the empoyees array in case it already has any values 
+   * ( in case we are loading a previous page )
    * get employees from the api 
    * Loop over the result
    * add only 10 employees to the employees array according to the itemsPerpage
    */
   getEmployees() {
+    if (this.employees.length > 0 ) {
+      this.employees = [];
+    }
    this.employeeService.getEmployees()
    .toPromise()
    .then ((employees) => {
@@ -63,14 +69,16 @@ export class AppPagerComponent implements OnInit {
    * 
    */
   getNextPage() {
-
-    console.log('pages length ', this.pages.length);
-   this.employeeService.getNextEmployees(this.pages[this.pages.length - 1].lastEmployeeId)
-   .toPromise()
-   .then (employees => {
-      this.employees = employees;
-      this.addPage(employees[employees.length - 1].employeeId);
-   })
+    if(this.pages.length > 0) {
+      this.employeeService.getNextEmployees(this.pages[this.pages.length - 1].lastEmployeeId)
+      .toPromise()
+      .then (employees => {
+          this.employees = employees;
+          this.addPage(employees[employees.length - 1].employeeId);
+      })
+    } else {
+      this.getEmployees();
+    }
   }
 
   /**
@@ -80,15 +88,13 @@ export class AppPagerComponent implements OnInit {
    * get the next 10 customers starting from the lastEmployeeId of the previous page
    */
   getPreviousPage() {
-    console.log('pages length ', this.pages.length);
-    
     switch(this.pages.length) {
+      case 0: 
+        this.getEmployees();
+      break;
       case 1: 
         this.removePage();
         this.getNextPage();
-      break;
-      case 0: 
-        this.getEmployees();
       break;
       default: 
         this.removePage();
@@ -99,12 +105,11 @@ export class AppPagerComponent implements OnInit {
    }
 
    /**
-    * 
+    * add a new ResultPage to the pages array 
     * @param lastEmployeeId last EmployeeId which is used to get the next 10 employees
     */
    addPage(lastEmployeeId: number) {
     let page = new ResultPage();
-    page.pageNumber = this.pages.length;
     page.lastEmployeeId = lastEmployeeId;
     this.pages.push(page);
    }
@@ -117,6 +122,10 @@ export class AppPagerComponent implements OnInit {
      this.pages.pop();
    }
 
+   /**
+    * get the current page number which is equal to the length of pages[]
+    * @returns integer
+    */
    getCurrentPage() {
      return this.pages.length;
    }

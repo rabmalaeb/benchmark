@@ -1,3 +1,5 @@
+$benefits--backgrounnd-color:  #e6e9ee;
+
 .benefits {
 
 }
@@ -11,24 +13,21 @@
     margin-bottom: 20px;
 }
 
-.benefits__available {
-    border: 1px solid #d6d6d6;
+.benefits__section {
+    border: 1px solid $benefits--backgrounnd-color;
     margin-right: 20px;
     height: 200px;
     flex: 0.5;
 }
 
-.benefits__assigned {
-    border: 1px solid #d6d6d6;
-    flex: 0.5;
-    height: 200px;
-}
-
-
 .benefits__item {
     padding: 10px;
     cursor: pointer;
     &:hover {
-        background-color: #e6e9ee;
+        background-color: $benefits--backgrounnd-color;
     }
+}
+
+.benefits__button {
+    width: 150px;
 }

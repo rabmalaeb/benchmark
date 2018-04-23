@@ -44,14 +44,19 @@ export class DependentsComponent implements OnInit {
   }
   
   /**
-   * create a new Dependent
+   * create a new Dependent unless the previous dependent is not empty
    * add it to the dependets array
    */
   addDependent(): void {
-    let dependent = new Dependent();
-    dependent.id = this.numberOfDependents;
-    this.numberOfDependents++;
-    this.dependents.push(dependent);
+    if(this.dependents.length > 0 && !this.dependents[this.dependents.length -1].name) {
+     
+    } else {
+      let dependent = new Dependent();
+      dependent.id = this.numberOfDependents;
+      this.numberOfDependents++;
+      this.dependents.push(dependent);
+    }
+    
   }
 
   /**
@@ -63,13 +68,30 @@ export class DependentsComponent implements OnInit {
     this.dependents.splice(id, 1);
   }
 
+  isDependentsValid() {
+    let isValid = true;
+    if(this.dependents.length > 0 ) {
+     this.dependents.forEach(dependent => {
+      if(!dependent.name) {
+        isValid = false;
+        } 
+      })
+    } else {
+      isValid = false;
+    }
+    return isValid;
+  }
+
  /**
    * update the dependents in the workflowservice
    * Go to the next step 
    */
   save() {
-    this.workflowService.setDependents(this.dependents);
-    this.workflowService.goToStep(STEPS.benefits);
+    if(this.isDependentsValid()) {
+      this.workflowService.setDependents(this.dependents);
+      this.workflowService.goToStep(STEPS.benefits);
+    }
+    
   }
 
 }

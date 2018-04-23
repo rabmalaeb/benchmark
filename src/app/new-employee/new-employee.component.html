@@ -40,7 +40,7 @@
               Date of Birth
             </div>
             <div class="form-item__input">
-                <ng-datepicker [(ngModel)]="employeeInfo.dob" [options]="options" name="date" #date="ngModel"></ng-datepicker>
+                <ng-datepicker class="form-item__datepicker" [(ngModel)]="employeeInfo.dob" [options]="options" name="date" #date="ngModel"></ng-datepicker>
             </div>
             <div [hidden]="date.valid || date.pristine" class="form-item__error">
                 Date is required

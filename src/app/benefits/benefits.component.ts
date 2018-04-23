@@ -12,12 +12,7 @@ import { STEPS } from '../workflow/workflow.model';
 export class BenefitsComponent implements OnInit {
 
   constructor(private dragulaService: DragulaService, private workflowService: WorkflowService) {
-    dragulaService.dropModel.subscribe((value) => {
-      this.onDropModel(value.slice(1));
-    });
-    dragulaService.removeModel.subscribe((value) => {
-      this.onRemoveModel(value.slice(1));
-    });
+
    }
 
    title: string = "Employee Benefits";
@@ -41,14 +36,12 @@ export class BenefitsComponent implements OnInit {
     }
   }
 
-  private onDropModel(args) {
-    let [el, target, source] = args;
-    // do something else
-  }
-
-  private onRemoveModel(args) {
-    let [el, source] = args;
-    // do something else
+  /**
+   * check if selectedBenefits array is not empty
+   * @returns boolean true if valid, false if not valid
+   */
+  isBenefitsValid() {
+    return this.selectedBenefits.length > 0 ? true : false;
   }
 
   /**
@@ -56,8 +49,10 @@ export class BenefitsComponent implements OnInit {
    * Go to the next step 
    */
   save() {
-    this.workflowService.setBenefits(this.selectedBenefits);
-    this.workflowService.goToStep(STEPS.summary);
+    if(this.isBenefitsValid()) {
+      this.workflowService.setBenefits(this.selectedBenefits);
+      this.workflowService.goToStep(STEPS.summary);
+    }
   }
 }
 
