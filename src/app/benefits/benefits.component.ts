@@ -12,15 +12,26 @@ import { STEPS } from '../workflow/workflow.model';
 export class BenefitsComponent implements OnInit {
 
   constructor(private dragulaService: DragulaService, private workflowService: WorkflowService) {
-
    }
 
+   /**
+    * @type string Title of the component
+    */
    title: string = "Employee Benefits";
+
+   /**
+    * @type Array<string> holds the values of the benefits
+    */
    benefits: Array<string> = [ 'Meal', 'Travel', 'Phone', 'Accomodation'];
+
+   /**
+    * @type Array<string> holds the values of the selected benefits
+    */
    selectedBenefits: Array<string> = [];
 
   /**
    * Initializes Benefits Component 
+   * If Dependents is not valid redirect to dependents
    * get the selectedbenefits from the workflowservice
    * Remove already selected benefits from the original benefits array
    * 

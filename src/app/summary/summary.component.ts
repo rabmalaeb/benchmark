@@ -13,11 +13,29 @@ export class SummaryComponent implements OnInit {
 
   constructor(private workflowService: WorkflowService) { }
 
+  /**
+   * 
+   */
   title: string = "New Employee Summary";
+
+  /**
+   * 
+   */
   dependents: Array<Dependent> = [];
+  
+  /**
+   * 
+   */
   employeeInfo: EmployeeInfo;
+
+  /**
+   * 
+   */
   benefits: Array<string> = [];
 
+  /**
+   * 
+   */
   get diagnostic() { 
     let summary: Array<object> = [];
     summary.push({Employee: this.employeeInfo});
@@ -27,6 +45,9 @@ export class SummaryComponent implements OnInit {
     return JSON.stringify(summary); 
   }
 
+  /**
+   * 
+   */
   ngOnInit() {
     if(!this.workflowService.isBenefitsValid()) {
       this.workflowService.goToStep(STEPS.benefits);
