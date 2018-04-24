@@ -51,7 +51,15 @@
       </div>
     </div>
      <div class="summary__section">
-        {{jsonObject}}
+        <div class="summary__section-title"> Employee JSON </div>
+        <div class="summary__section-content">
+          {{jsonObject}}
+        </div>
+     </div>
+     <div class="summary__section">
+        <div class="summary__section-button">
+          <div class="button-item" (click)="resetWorkflow"> Finish </div>
+        </div>
      </div>
   </div>
 </div>

@@ -61,6 +61,10 @@ export class SummaryComponent implements OnInit {
     return JSON.stringify(summary); 
   }
 
+  resetWorkflow() {
+    this.workflowService.resetWorkflow();
+  }
+
 
 }
 

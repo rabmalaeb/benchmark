@@ -150,4 +150,8 @@ export class WorkflowService {
       return this.dependents.length === 0 ? false : true;
     }
 
+    resetWorkflow() {
+      window.location.reload();
+    }
+
 }
