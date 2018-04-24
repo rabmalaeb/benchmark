@@ -12,7 +12,7 @@ export class DependentItemComponent implements OnInit {
   constructor() { }
 
   /**
-   * Binded Dependent that is sent from the parent
+   * Binded property that is sent from the parent
    * @type Dependent
    */
   @Input() dependent: Dependent;

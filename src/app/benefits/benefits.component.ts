@@ -30,19 +30,19 @@ export class BenefitsComponent implements OnInit {
    selectedBenefits: Array<string> = [];
 
   /**
-   * Initializes Benefits Component 
+   * Initializes Benefits Component
    * If Dependents is not valid redirect to dependents
    * get the selectedbenefits from the workflowservice
    * Remove already selected benefits from the original benefits array
-   * 
+   *
    */
   ngOnInit() {
     if(!this.workflowService.isDependentsValid()) {
       this.workflowService.goToStep(STEPS.dependents);
     }
     this.selectedBenefits = this.workflowService.getBenefits();
-    
-    if( this.selectedBenefits.length > 0 ) {  
+
+    if( this.selectedBenefits.length > 0 ) {
       this.benefits = this.benefits.filter(benefit => !this.selectedBenefits.includes(benefit))
     }
   }
@@ -57,7 +57,7 @@ export class BenefitsComponent implements OnInit {
 
   /**
    * update the benefits in the workflowservice
-   * Go to the next step 
+   * Go to the next step
    */
   save() {
     if(this.isBenefitsValid()) {
@@ -66,4 +66,3 @@ export class BenefitsComponent implements OnInit {
     }
   }
 }
-

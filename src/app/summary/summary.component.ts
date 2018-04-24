@@ -22,7 +22,7 @@ export class SummaryComponent implements OnInit {
    * 
    */
   dependents: Array<Dependent> = [];
-  
+
   /**
    * 
    */
@@ -33,20 +33,10 @@ export class SummaryComponent implements OnInit {
    */
   benefits: Array<string> = [];
 
+  
   /**
-   * 
-   */
-  get diagnostic() { 
-    let summary: Array<object> = [];
-    summary.push({Employee: this.employeeInfo});
-    summary.push({Benefits: this.benefits});
-    summary.push({Dependents: this.dependents});
-
-    return JSON.stringify(summary); 
-  }
-
-  /**
-   * 
+   * if Previous step ( benefits ) is not valid go back to benefits
+   * set the dependents, employeeInfo and benefits from workflowService
    */
   ngOnInit() {
     if(!this.workflowService.isBenefitsValid()) {
@@ -55,8 +45,22 @@ export class SummaryComponent implements OnInit {
     this.dependents = this.workflowService.getDependents();
     this.employeeInfo = this.workflowService.getEmployeeInfo();
     this.benefits = this.workflowService.getBenefits();
-    
   }
+
+  /**
+   * create a json representation of the Workflow models 
+   * @returns Array<object>
+   */
+  get jsonObject() { 
+
+    let summary: Array<object> = [];
+    summary.push({Employee: this.employeeInfo});
+    summary.push({Benefits: this.benefits});
+    summary.push({Dependents: this.dependents});
+
+    return JSON.stringify(summary); 
+  }
+
 
 }
 

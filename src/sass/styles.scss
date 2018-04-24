@@ -2,7 +2,6 @@
 @import "mixins/global";
 @import "reset";
 @import "table";
-@import "globals";
 @import "employee-box";
 @import "form-item";
 @import "input-item";
@@ -10,6 +9,7 @@
 @import "employee-item";
 @import "form";
 @import "title";
+@import "dragula";
 
 
 body, html {

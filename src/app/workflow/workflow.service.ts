@@ -19,22 +19,26 @@ export class WorkflowService {
   ];
 
   /**
-   * 
+   * defualts the currentStep to personal 
+   * @type string
    */
   private currentStep: string = STEPS.personal;
 
   /**
-   * 
+   * new EmployeeInfo instance
+   * @type EmployeeInfo 
    */
   private employeeInfo: EmployeeInfo = new EmployeeInfo();
 
   /**
-   * 
+   * to hold the dependents
+   * @type Array<Dependent> 
    */
   private dependents: Array<Dependent> = [];
 
   /**
-   * 
+   * to hold the benefits
+   * @type Array<string>
    */
   private benefits: Array<string> = [];
 
@@ -47,15 +51,16 @@ export class WorkflowService {
   }
 
   /**
-   * 
-   * @param step 
+   * set the currentStep 
+   * @param step current step to be set
    */
     setWorkflowStep(step: string) {
       this.currentStep = step;
     }
 
     /**
-     * 
+     * get the name, dob, salary from the employeeInfo object
+     * @returns EmployeeInfo
      */
     getEmployeeInfo() {
       var employeeInfo: EmployeeInfo = {
@@ -68,7 +73,7 @@ export class WorkflowService {
 
     /**
      * set the employeeInfo name, dob and salary
-     * @param data 
+     * @param data <EmployeeInfo>
      */
     setEmployeeInfo(data: EmployeeInfo) {
       this.employeeInfo.name = data.name;
@@ -118,6 +123,7 @@ export class WorkflowService {
     }
 
     /**
+     * check ifemployeeInfo is not empty
      * @returns boolean true if valid, false if not valid
      */
     isEmployeeInfoValid() {
@@ -128,13 +134,19 @@ export class WorkflowService {
       return true;
     }
 
+     /**
+     * check if benefits is not empty
+     * @returns boolean true if valid, false if not
+     */
     isBenefitsValid() {
       return this.benefits.length === 0 ? false : true;
     }
 
+    /**
+     * check if dependents is not empty
+     * @returns boolean true if valid, false if not
+     */
     isDependentsValid() {
-      console.log('dependents ', this.dependents);
-      
       return this.dependents.length === 0 ? false : true;
     }
 

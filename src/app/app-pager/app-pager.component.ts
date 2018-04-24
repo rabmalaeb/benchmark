@@ -18,19 +18,22 @@ export class AppPagerComponent implements OnInit {
   @Input()employees: Array<Employee> = [];
 
   /**
-   * array to hold the ResultPage
-   * which contain the 
+   * this array holds the pages of the pager.
+   * each page contains the lastEmployeeId which is used to get the next 10
+   * the length of this array is the number of pages in the pager
+   * @type Array<ResultPage>
    */
   pages: Array<ResultPage> = [];
 
   /**
-   * 
+   * defualts the number of pages in the pager to 10
+   * @type number 10
    */
   itemsPerPage: number = 10;
 
 
   /**
-   * 
+   *
    * @param employeeService instance of EmployeeService
    */
   constructor(private employeeService: EmployeeService) { }
@@ -43,9 +46,9 @@ export class AppPagerComponent implements OnInit {
   }
 
   /**
-   * reset the empoyees array in case it already has any values 
+   * reset the empoyees array in case it already has any values
    * ( in case we are loading a previous page )
-   * get employees from the api 
+   * get employees from the api
    * Loop over the result
    * add only 10 employees to the employees array according to the itemsPerpage
    */
@@ -60,13 +63,13 @@ export class AppPagerComponent implements OnInit {
         if(this.employees.length < this.itemsPerPage) {
           this.employees.push(employee);
         }
-     })      
-     this.addPage(this.employees[this.employees.length - 1].employeeId);     
+     })
+     this.addPage(this.employees[this.employees.length - 1].employeeId);
     })
   }
 
   /**
-   * 
+   *
    */
   getNextPage() {
     if(this.pages.length > 0) {
@@ -82,21 +85,21 @@ export class AppPagerComponent implements OnInit {
   }
 
   /**
-   * remove the last ResultPage from the pages array
-   * get the current last ResultPage from the pages array which is the previous page
-   * decrement the current page
-   * get the next 10 customers starting from the lastEmployeeId of the previous page
+   * checl the length of the pages array
+   * case 0 then call the getEmployees function to load the first 10 results
+   * case 1 then remove one page from pages Array and getNextPage
+   * default then remove two pages from pages Array and getNextPage
    */
   getPreviousPage() {
     switch(this.pages.length) {
-      case 0: 
+      case 0:
         this.getEmployees();
       break;
-      case 1: 
+      case 1:
         this.removePage();
         this.getNextPage();
       break;
-      default: 
+      default:
         this.removePage();
         this.removePage();
         this.getNextPage();
@@ -105,18 +108,17 @@ export class AppPagerComponent implements OnInit {
    }
 
    /**
-    * add a new ResultPage to the pages array 
+    * add a new ResultPage to the pages array
     * @param lastEmployeeId last EmployeeId which is used to get the next 10 employees
     */
    addPage(lastEmployeeId: number) {
-    let page = new ResultPage();
-    page.lastEmployeeId = lastEmployeeId;
-    this.pages.push(page);
+      let page = new ResultPage();
+      page.lastEmployeeId = lastEmployeeId;
+      this.pages.push(page);
    }
 
    /**
     * remove the last ResultPage from the pages array
-    * the current ResultPage is the previous page
     */
    removePage() {
      this.pages.pop();

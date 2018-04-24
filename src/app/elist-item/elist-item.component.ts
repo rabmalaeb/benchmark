@@ -25,17 +25,17 @@ export class ElistItemComponent implements OnInit {
   /**
    * @type string
    */
-  top: string = '0px';
+  top: string = 'auto';
 
   /**
    * @type string
    */
-  left: string = '0px';
+  left: string = 'auto';
 
   /**
    * @type string
    */
-  right: string = '0px';
+  right: string = 'auto';
 
   constructor() { }
 
@@ -43,9 +43,9 @@ export class ElistItemComponent implements OnInit {
   }
 
   /**
-   * 
-   * @param employee 
-   * @param event 
+   *
+   * @param employee
+   * @param event
    */
   editEmployee(employee: Employee, event: MouseEvent): void {
     this.setPosition(event);
@@ -62,14 +62,13 @@ export class ElistItemComponent implements OnInit {
 
   /**
    * set the position for the employee box according to the mouse click position
-   * @param event 
+   * @param event
    */
   setPosition(event: MouseEvent) {
     let screenWidth = window.screen.availWidth;
     let screenHeight = window.screen.availHeight;
-        
+
     if(screenWidth - event.clientX < 400 ) { // 400 is approx the width of the employee box
-      this.left = 'auto';
       this.right = `${screenWidth - event.clientX}px`;
     } else {
       this.left = `${event.clientX}px`;
