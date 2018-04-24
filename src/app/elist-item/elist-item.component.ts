@@ -25,17 +25,17 @@ export class ElistItemComponent implements OnInit {
   /**
    * @type string
    */
-  top: string = 'auto';
+  top: string = '0px';
 
   /**
    * @type string
    */
-  left: string = 'auto';
+  left: string = '0px';
 
   /**
    * @type string
    */
-  right: string = 'auto';
+  right: string = '0px';
 
   constructor() { }
 
@@ -62,6 +62,7 @@ export class ElistItemComponent implements OnInit {
 
   /**
    * set the position for the employee box according to the mouse click position
+   * adjust the position of the employee box according to screen size
    * @param event
    */
   setPosition(event: MouseEvent) {
@@ -70,11 +71,13 @@ export class ElistItemComponent implements OnInit {
 
     if(screenWidth - event.clientX < 400 ) { // 400 is approx the width of the employee box
       this.right = `${screenWidth - event.clientX}px`;
+      this.left = 'auto';
     } else {
       this.left = `${event.clientX}px`;
+      this.right = 'auto';
     }
     if(screenHeight - event.clientY < 400) {
-      this.top = `${event.clientY - 280}px`; // 280ps is the height of the employee box
+      this.top = `${event.clientY - 280}px`; // 280px is the height of the employee box
     } else {
       this.top = `${event.clientY}px`;
     }

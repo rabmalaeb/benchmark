@@ -12,10 +12,10 @@
               Name
             </div>
             <div class="form-item__input">
-              <input class="input-item" required type="text" required [(ngModel)]="employeeInfo.name" name="name" #name="ngModel">
+              <input class="input-item" required type="text" pattern='^[a-zA-Z\s]*$' required [(ngModel)]="employeeInfo.name" name="name" #name="ngModel">
             </div>
             <div [hidden]="name.valid || name.pristine" class="form-item__error">
-                Name is required
+                Name is required and should only contain letters
             </div>
           </div>
         </div>

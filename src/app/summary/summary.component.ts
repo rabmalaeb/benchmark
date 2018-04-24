@@ -13,24 +13,9 @@ export class SummaryComponent implements OnInit {
 
   constructor(private workflowService: WorkflowService) { }
 
-  /**
-   * 
-   */
   title: string = "New Employee Summary";
-
-  /**
-   * 
-   */
   dependents: Array<Dependent> = [];
-
-  /**
-   * 
-   */
   employeeInfo: EmployeeInfo;
-
-  /**
-   * 
-   */
   benefits: Array<string> = [];
 
   
@@ -52,15 +37,16 @@ export class SummaryComponent implements OnInit {
    * @returns Array<object>
    */
   get jsonObject() { 
-
     let summary: Array<object> = [];
     summary.push({Employee: this.employeeInfo});
     summary.push({Benefits: this.benefits});
     summary.push({Dependents: this.dependents});
-
     return JSON.stringify(summary); 
   }
 
+  /**
+   * reset the workflow by reloading the page
+   */
   resetWorkflow() {
     this.workflowService.resetWorkflow();
   }

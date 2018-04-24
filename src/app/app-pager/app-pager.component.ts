@@ -31,6 +31,10 @@ export class AppPagerComponent implements OnInit {
    */
   itemsPerPage: number = 10;
 
+  /**
+   * true if employees are being loaded, fasle if done
+   */
+  isLoading: boolean = false;
 
   /**
    *
@@ -53,6 +57,7 @@ export class AppPagerComponent implements OnInit {
    * add only 10 employees to the employees array according to the itemsPerpage
    */
   getEmployees() {
+    this.isLoading = true;
     if (this.employees.length > 0 ) {
       this.employees = [];
     }
@@ -65,6 +70,7 @@ export class AppPagerComponent implements OnInit {
         }
      })
      this.addPage(this.employees[this.employees.length - 1].employeeId);
+     this.isLoading = false;
     })
   }
 
@@ -72,12 +78,14 @@ export class AppPagerComponent implements OnInit {
    *
    */
   getNextPage() {
+    this.isLoading = true;
     if(this.pages.length > 0) {
       this.employeeService.getNextEmployees(this.pages[this.pages.length - 1].lastEmployeeId)
       .toPromise()
       .then (employees => {
           this.employees = employees;
           this.addPage(employees[employees.length - 1].employeeId);
+          this.isLoading = false;
       })
     } else {
       this.getEmployees();
@@ -131,5 +139,13 @@ export class AppPagerComponent implements OnInit {
    getCurrentPage() {
      return this.pages.length;
    }
+
+   /**
+    * @return Array of length n
+    * @param n length of the returned array 
+    */
+   aryayOfLength(n: number): any[] {
+    return Array(n);
+  }
 
 }

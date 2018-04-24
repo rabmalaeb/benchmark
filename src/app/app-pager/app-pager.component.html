@@ -6,9 +6,19 @@
         <div class="table__head-item">Date of Birth</div>
         <div class="table__head-item">Department</div>
       </div>
-      <div class="table__column" *ngFor="let employee of employees">
-        <elist-item class="elist-item" [employee]="employee"></elist-item>
-      </div>
+      <div *ngIf="isLoading then loadingMask else contentResult"></div>
+      <ng-template #contentResult>
+        <div *ngFor="let employee of employees" class="table__column">     
+            <elist-item class="elist-item" [employee]="employee"></elist-item>
+        </div> 
+      </ng-template>
+      <ng-template #loadingMask> 
+        <div *ngFor="let item of aryayOfLength(10)" class="table__column">
+            <div class="table__column-item"> <span class="item-mask"></span> </div>
+            <div class="table__column-item"> <span class="item-mask"></span> </div>
+            <div class="table__column-item table__column-item_is-last" (click)="editEmployee(employee, $event)"> <span class="item-mask"></span> </div>
+        </div>
+      </ng-template>
     </div>
   </div>
   <div class="pager__controls">
